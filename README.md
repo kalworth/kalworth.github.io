@@ -1,2 +1,3 @@
-# Azula_blogs.github.io
-# Azula_blogs.github.io
+## 欢迎来到我的博客
+
+本人西电大二采购一个，平时随便写写，最近主要的方向是后端与ai产品对接
