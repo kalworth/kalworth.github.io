@@ -1,3 +1,7 @@
+---
+title : 基于mediapipe的动态捕捉以及Unity同步模型动作
+tags : python
+---
 ## 基于mediapipe的动态捕捉以及Unity同步模型动作
 
 ### Mediapipe简介以及动作捕捉实现
@@ -185,14 +189,14 @@ public class Actions : MonoBehaviour
     public GameObject[] bodyPoints;
     void Start()
     {
-    
+  
     }
 
     // Update is called once per frame
     void Update()
     {
         string data = udpReceive.data;
-    
+  
         print(data);
         string[] points = data.Split(',');
         print(points[0]);
@@ -261,4 +265,3 @@ public class LineCode : MonoBehaviour
 > 联合作者 ：Pache([https://pache-ak.github.io/pache.github.io/](https://pache-ak.github.io/pache.github.io/)) Azula([https://limafang.github.io/Azula_blogs.github.io/](https://limafang.github.io/Azula_blogs.github.io/))
 >
 > 参考学习内容：https://www.youtube.com/watch?v=BtMs0ysTdkM
->
