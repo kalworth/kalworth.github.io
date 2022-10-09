@@ -1,6 +1,6 @@
 ---
 title: sheep
-tags: TeXt
+tags: web
 ---
 ## 羊了个羊通关方法汇总
 
