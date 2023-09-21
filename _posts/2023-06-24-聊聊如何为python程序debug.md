@@ -1,6 +1,8 @@
 ## 什么是调试，为什么我们需要调试
-这里借用南京大学 蒋炎岩 老师的ppt
-[![pPInbjg.png](https://z1.ax1x.com/2023/09/20/pPInbjg.png)](https://imgse.com/i/pPInbjg)
+这里借用南京大学 蒋炎岩 老师的ppt  
+
+[![pPInbjg.png](https://z1.ax1x.com/2023/09/20/pPInbjg.png)](https://imgse.com/i/pPInbjg)  
+
 在计算机中 ，我们将机器看作状态机，同时我们遵循计算机不会犯错的原则，因此，当你设计的程序产生了与你意料相悖的结果，那就可以认为你的程序产生了bug。    
 
 **调试理论中的状态机**  
