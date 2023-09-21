@@ -254,6 +254,41 @@ AssertionError: n超出了范围！
 
 这里在运行中，我们观察到num的值已经超出了我们设定的范围，而程序依然在运行，成功找到了原代码存在的bug。  
 通过vscode进行调试的操作就是这些。  
+### 如何利用ai来帮助debug？
+#### bito ai
+在这里我将向你介绍如何使用ai来帮助我们快速debug，我使用的工具是 `bito ai`
+从使用上来说，利用ai解决bug和从百度搜索bug解决方法类似，就是将问题塞给ai，让ai来帮你回答，但今天介绍的`bito ai`是一个vscode插件，
+目前支持的功能有:
+1. 代码补全助手:使用深度学习模型进行代码补全和提示。可以根据变量、函数定义和调用关系进行准确地补全,最大限度减少打字量。
+2. 语法检查器:使用自然语言处理技术检查代码注释和变量名,确保其清晰、准确和连贯。可配置性很高,支持多种语言。  
+3. 重构提示器:分析代码结构和逻辑,提出重构建议,使代码更加整洁清晰。采用AST分析,对各种语言都有很好的支持。
+4. 代码评论生成器:自动生成代码方法、类、文件等的注释。可以自动提取代码逻辑和功能,生成模板规范的注释。简化手动文档工作。
+5. 代码质量检测:通过静态代码分析,检测出未处理异常、资源泄漏、安全漏洞等代码缺陷。提供修复提示,在开发过程中及早发现和解决问题。
+ 6. Todo高亮和提示:通过自然语言理解,检测代码中的Todo项并进行分类和高亮。按优先级和截止时间给出提醒,使Todo不遗漏。  
+
+
+我将在下面为你展示我是如何用它来debug的：
+##### 获取bito ai
+Bito ai 是vscode 的一个插件，你可以在vscode的插件扩展里找到它  
+[![pPal9Ln.png](https://s1.ax1x.com/2023/08/28/pPal9Ln.png)](https://imgse.com/i/pPal9Ln,#pic_center)  
+
+点击获取之后，你就可以在最左侧的活动栏里找到它的图标  
+
+[![pPaQJrn.png](https://s1.ax1x.com/2023/08/28/pPaQJrn.png)](https://imgse.com/i/pPaQJrn,#pic_center)  
+##### 使用bito ai
+Bito ai 支持像gpt一样的直接询问，你可以把它当成gpt来使用，同时内部内置了很多有用的prompt来帮你快速上手它的使用
+像这样直接向bito ai 提问  
+
+[![pPaQvRg.png](https://s1.ax1x.com/2023/08/28/pPaQvRg.png)](https://imgse.com/i/pPaQvRg,#pic_center)    
+
+
+或者利用它内置的prompt提问，你可以用鼠标右键快速完成提问  
+[![pPalPZq.png](https://s1.ax1x.com/2023/08/28/pPalPZq.png)](https://imgse.com/i/pPalPZq,#pic_center)  
+
+
+总而言之，合理利用手边的工具来帮助你debug吧!  
+
+## 调试进阶 
 下面的内容需要一定的模块基础，如果你理解困难，不要灰心，可以等后面的学习结束后来回看
 ### **logging**  
 
@@ -450,7 +485,6 @@ for num in range(10,21):  # 迭代 10 到 20 之间的数字
       print ('%d 是一个质数' % num)
 ```
 如何利用pdb进行调试的简单介绍就到这里。
-## 调试进阶
 ### **利用vscode完成带参调试**
 这部分的官方文档，请参考：
 https://code.visualstudio.com/docs/python/debugging#_set-configuration-options  
@@ -564,37 +598,3 @@ logging.critical('This is a critical message')
  
 通过使用不同级别的日志信息，我们可以更好地了解程序的运行状态并更轻松地调试和排除问题。
 
-
-### 如何利用ai来帮助debug？
-#### bito ai
-在这里我将向你介绍如何使用ai来帮助我们快速debug，我使用的工具是 `bito ai`
-从使用上来说，利用ai解决bug和从百度搜索bug解决方法类似，就是将问题塞给ai，让ai来帮你回答，但今天介绍的`bito ai`是一个vscode插件，
-目前支持的功能有:
-1. 代码补全助手:使用深度学习模型进行代码补全和提示。可以根据变量、函数定义和调用关系进行准确地补全,最大限度减少打字量。
-2. 语法检查器:使用自然语言处理技术检查代码注释和变量名,确保其清晰、准确和连贯。可配置性很高,支持多种语言。  
-3. 重构提示器:分析代码结构和逻辑,提出重构建议,使代码更加整洁清晰。采用AST分析,对各种语言都有很好的支持。
-4. 代码评论生成器:自动生成代码方法、类、文件等的注释。可以自动提取代码逻辑和功能,生成模板规范的注释。简化手动文档工作。
-5. 代码质量检测:通过静态代码分析,检测出未处理异常、资源泄漏、安全漏洞等代码缺陷。提供修复提示,在开发过程中及早发现和解决问题。
- 6. Todo高亮和提示:通过自然语言理解,检测代码中的Todo项并进行分类和高亮。按优先级和截止时间给出提醒,使Todo不遗漏。  
-
-
-我将在下面为你展示我是如何用它来debug的：
-##### 获取bito ai
-Bito ai 是vscode 的一个插件，你可以在vscode的插件扩展里找到它  
-[![pPal9Ln.png](https://s1.ax1x.com/2023/08/28/pPal9Ln.png)](https://imgse.com/i/pPal9Ln,#pic_center)  
-
-点击获取之后，你就可以在最左侧的活动栏里找到它的图标  
-
-[![pPaQJrn.png](https://s1.ax1x.com/2023/08/28/pPaQJrn.png)](https://imgse.com/i/pPaQJrn,#pic_center)  
-##### 使用bito ai
-Bito ai 支持像gpt一样的直接询问，你可以把它当成gpt来使用，同时内部内置了很多有用的prompt来帮你快速上手它的使用
-像这样直接向bito ai 提问  
-
-[![pPaQvRg.png](https://s1.ax1x.com/2023/08/28/pPaQvRg.png)](https://imgse.com/i/pPaQvRg,#pic_center)    
-
-
-或者利用它内置的prompt提问，你可以用鼠标右键快速完成提问  
-[![pPalPZq.png](https://s1.ax1x.com/2023/08/28/pPalPZq.png)](https://imgse.com/i/pPalPZq,#pic_center)  
-
-
-总而言之，合理利用手边的工具来帮助你debug吧！
