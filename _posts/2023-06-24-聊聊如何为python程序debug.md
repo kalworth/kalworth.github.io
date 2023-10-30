@@ -1,3 +1,7 @@
+---
+title : 如何为python程序debug
+tags : python,debug
+---
 ## 什么是调试，为什么我们需要调试
 这里借用南京大学 蒋炎岩 老师的ppt  
 
