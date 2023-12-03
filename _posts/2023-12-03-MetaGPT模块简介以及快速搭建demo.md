@@ -315,4 +315,6 @@ async def main():
     logger.info(result)
 
 asyncio.run(main)
-```
+```  
+## 引用  
+https://github.com/datawhalechina/llm-universe  调用chatgptapi
