@@ -1159,3 +1159,4 @@ asyncio.run(main())
 - 目前为止我们设计的所有思考模式都可以总结为是链式的思考（chain of thought），能否利用 MetaGPT 框架实现树结构的思考（tree of thought）图结构的思考（graph of thought）？试着实现让 ai 生成树结构的动作列表，并按照树的遍历方式执行他们，如果你实现，这将是加分项
 
 
+如果您对更多内容感兴趣，欢迎联系我
