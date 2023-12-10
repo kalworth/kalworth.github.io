@@ -17,7 +17,7 @@ Agent = 大语言模型（LLM） + 观察 + 思考 + 行动 + 记忆
 
 在MetaGPT中定义的一个agent运行示例如下：
 
-[图片]
+![Alt text](images/2023-12-10/image-1.png)
 
 - 一个agent在启动后他会观察自己能获取到的信息，加入自己的记忆中
 - 下一步进行思考，决定下一步的行动，也就是从Action1，Action2，Action3中选择执行的Action
@@ -40,7 +40,7 @@ SimpleWriteCode 这个Action 应该能根据我们的需求生成我们期望的
 #### 1.2.1  需求分析
 要实现一个 SimpleCoder 我们需要分析这个Agent 它需要哪些能力  
 
-[图片]  
+![Alt text](images/2023-12-10/image-2.png)  
 
 首先我们需要让他接受用户的输入的需求，并记忆我们的需求，接着这个Agent它需要根据自己已知的信息和需求来编写我们需要的代码。  
 
@@ -129,7 +129,7 @@ def parse_code(rsp):
 #### 1.2.3 设计SimpleCoder角色
 
 在此之前我们需要简单介绍一下 Message，在MetaGPT中，Message 类是最基本的信息类型，Message 的基本组成如下
-[图片]
+![Alt text](images/2023-12-10/image-3.png)
 在本章节的学习中我们只涉及 content  role  cause_by ，除了content外，其他内容都是可选的
 他们分别代表信息内容，发出信息的角色，以及是哪个动作导致产生的message
 
@@ -294,7 +294,7 @@ asyncio.run(main())
 我们注意到一个智能体能够执行一个动作，但如果只有这些，实际上我们并不需要一个智能体。通过直接运行动作本身，我们可以得到相同的结果。智能体的力量，或者说Role抽象的惊人之处，在于动作的组合（以及其他组件，比如记忆，但我们将把它们留到后面的部分）。通过连接动作，我们可以构建一个工作流程，使智能体能够完成更复杂的任务。
 
 ### 1.3.1 需求分析
-[图片]
+![Alt text](images/2023-12-10/image-4.png)
 假设现在我们不仅希望用自然语言编写代码，而且还希望生成的代码立即执行。一个拥有多个动作的智能体可以满足我们的需求。让我们称之为RunnableCoder，一个既写代码又立即运行的Role。我们需要两个Action：SimpleWriteCode 和 SimpleRunCode
 
 ### 1.3.2 编写SimpleWriteCode动作  
@@ -515,7 +515,7 @@ asyncio.run(main())
 ### 1.4.1 需求分析
 
 因为token限制的原因，我们先通过 LLM 大模型生成教程的目录，再对目录按照二级标题进行分块，对于每块目录按照标题生成详细内容，最后再将标题和内容进行拼接，解决 LLM 大模型长文本的限制问题。
-[图片]
+![Alt text](images/2023-12-10/image-5.png)
 
 ### 1.4.2 编写 WriteDirectory 动作
 
@@ -917,7 +917,7 @@ async def _handle_directory(self, titles: Dict) -> Message:
 
 如果你还没有理解，这里我制作了一个简单的思维导图来帮助你梳理这个过程
 
-[图片]
+![Alt text](images/2023-12-10/image-6.png)
 
 ### 1.4.5 运行 TutorialAssistant 角色
 
