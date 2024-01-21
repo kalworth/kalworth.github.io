@@ -75,7 +75,7 @@ class State(TypedDict):
 graph = StateGraph(State)
 ```
 
-StateGraph 在当前 langgraph 版本中被视为 graph 的核心，上文中声明一个 Stategraph 的同时也声明了这个图的基本信息。`input` 作为 graph 需要完成 task 的文字描述，all_actions 作为 graph 的动作列表，记录遍历图中采用的所有 action，类型为字符串，可以采用 `operator.add` 添加内容
+StateGraph 在当前 langgraph 版本中被视为 graph 的核心，上文中声明一个 Stategraph 的同时也声明了这个图的基本信息。`input` 作为 graph 需要完成 task 的文字描述，`all_actions` 作为 graph 的动作列表，记录遍历图中采用的所有 action，类型为字符串，可以采用 `operator.add` 添加内容
 
 ```python
 class AgentState(TypedDict):
@@ -129,7 +129,7 @@ def execute_tools(data):
 
 ### The Starting Edge
 
-构建完节点之后，我们就需要创建边来连接各个节点，因为 Stategraph 中限制了节点与节点间传递的信息类型，我们需要一个单独的方法来确立初始进入的节点，这条专门生成的边也叫做 Starting Edge
+构建完节点之后，我们就需要创建边来连接各个节点，因为 Stategraph 中限制了节点与节点间传递的信息类型，我们需要一个单独的方法来确立初始进入的节点，这条专门生成的边也叫做 `Starting Edge`
 
 用例如下
 
@@ -147,7 +147,7 @@ graph.add_edge("tools", "model")
 
 ### Conditional Edges
 
-Conditional Edges 是我觉得 langgraph 最棒的设计，从一个节点出发可以连接多个节点，跳转的条件由用户设定的函数返回结果决定
+`Conditional Edges` 是我觉得 langgraph 最棒的设计，从一个节点出发可以连接多个节点，跳转的条件由用户设定的函数返回结果决定
 
 ```python
 graph.add_conditional_edge(
@@ -247,11 +247,14 @@ app = workflow.compile()
 
 也是比较简单定义了一个 graph，input 与 chat_history 作为输入传入，agent_outcome 与 intermediate_steps 用来限制各个节点之间传入信息的类型，执行顺序是
 
-> agent -》决定要不要使用 tool
-> if 要 -》action -》agent
+> agent -》决定要不要使用 tool  
+> 
+> if 要 -》action -》agent  
+> 
 > if 不要 -》END
 
 最后通过 compile()方法将图变为 Runable 类型，之后就可以执行 invoke stream 等等方法了
+
 
 ### 在此之上的思考
 
@@ -261,7 +264,11 @@ app = workflow.compile()
 
 > 这对于需要同时理解 LECL 和 langgraph 的用户来说非常困惑。为什么不在 LCEL 中实现 DAG？
 
-我的想法是，因为语法上的问题，首先 LCEL 本身要实现 loop 和 condition 的情况就比较困难，为了避免更冗余的情况（本身 LCEL 就是为了简化线性流程上 langchain 陈旧的繁琐写法），同时 loop 和 condition 这两种情况又非常重要，举几个可能操作场景，我希望 llm 给我一篇技术文稿，完成后我要做审稿修改使他根据我的意见完善自己的创作成果，这时候我们就需要根据人类输入 condition 来判断继续完善内容，重新撰写内容还是结束任务，使用 LCEL 进行线性的 SOP 编排很难实现这样的场景，同时 langgraph 为 SOP 的编排提供了更多天马行空的可能，我们可以覆盖线性，树形，更多可能的应用场景，因此 langgraph 的实现还是非常有必要的
+我的想法是，因为语法上的问题，首先 LCEL 本身要实现 loop 和 condition 的情况就比较困难，为了避免更冗余的情况（本身 LCEL 就是为了简化线性流程上 langchain 陈旧的繁琐写法），同时 loop 和 condition 这两种情况又非常重要，举几个可能操作场景，我希望 llm 给我一篇技术文稿，完成后我要做审稿修改使他根据我的意见完善自己的创作成果，这时候我们就需要根据人类输入 condition 来判断继续完善内容，重新撰写内容还是结束任务，使用 LCEL 进行线性的 SOP 编排很难实现这样的场景，同时 langgraph 为 SOP 的编排提供了更多天马行空的可能，我们可以覆盖线性，树形，更多可能的应用场景，因此 langgraph 的实现还是非常有必要的  
+
+
+我自己设计的利用langgraph实现TOT的思维导图如下  
+[![pFVRvge.png](https://s11.ax1x.com/2024/01/21/pFVRvge.png)](https://imgse.com/i/pFVRvge)
 
 未来 agent framework 可能预见的方向是，我们设立一个行之有效的 role play 框架，利用 profile（角色设定）与 action space（包括角色能够执行的 action node 列表）以及角色自有的 action graph（管理角色要执行的动作行动流程），llm 动态的维护自己当前要执行的 action graph，来确保单个 agent 在复杂生产环境中的稳定性，利用环境中对角色执行的上层 sop 做管理分工来实现我们多种多样的需求，
 
